@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 
 const db = mysql.createConnection({
     host: '127.0.0.1',
-    user: 'root', // replace with your MySQL username
-    password: 'kedar', // replace with your MySQL password
+    user: 'root', 
+    password: 'kedar', 
     database: 'signup_db'
 });
 
