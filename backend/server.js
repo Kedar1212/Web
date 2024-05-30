@@ -26,6 +26,9 @@ app.post('/signup', (req, res) => {
         res.send('User registered');
     });
 });
+app.get('/signup', (req, res) => {
+    res.sendFile('/Users/kedarkanase/testing_devops/Web/frontend/signup.html');
+});
 
 app.listen(3000, () => {
     console.log('Server running on port 3000');
