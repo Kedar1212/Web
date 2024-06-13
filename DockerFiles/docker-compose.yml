@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: kedar
+      MYSQL_DATABASE: signup_db
+    ports:
+      - "3306:3306"
+
+  node-app:
+    build:
+      context: ..
+      dockerfile: DockerFiles/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: kedar
+      MYSQL_DATABASE: signup_db
+    depends_on:
+      - mysql
