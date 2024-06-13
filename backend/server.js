@@ -1,16 +1,17 @@
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root', 
-    password: 'kedar', 
-    database: 'signup_db'
+    host: process.env.MYSQL_HOST || '127.0.0.1',
+    user: process.env.MYSQL_USER || 'root',
+    password: process.env.MYSQL_PASSWORD || 'kedar',
+    database: process.env.MYSQL_DATABASE || 'signup_db'
 });
 
 db.connect((err) => {
@@ -26,8 +27,9 @@ app.post('/signup', (req, res) => {
         res.send('User registered');
     });
 });
+
 app.get('/signup', (req, res) => {
-    res.sendFile('/Users/kedarkanase/testing_devops/Web/frontend/signup.html');
+    res.sendFile(path.join(__dirname, '../frontend/signup.html'));
 });
 
 app.listen(3000, () => {
