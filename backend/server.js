@@ -29,7 +29,7 @@ app.post('/signup', (req, res) => {
 });
 
 app.get('/signup', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/signup.html'));
+    res.sendFile(path.join(__dirname, '..', 'frontend', 'signup.html'));
 });
 
 app.listen(3000, () => {
